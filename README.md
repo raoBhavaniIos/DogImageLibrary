@@ -29,15 +29,16 @@ imageFatch.getImage { image in
 imageFatch.getNextImage { image in
                 
         }
-// Fetch PreviousImage and bool if no previous image is there 
-let tuple = imageFatch.getPreviousImage()
+
+// gets PreviousImage and bool for the previous image present 
+let (image, isPrevEnable) = imageFatch.getPreviousImage()
         
         if let image = tuple.image {
                 self.imageView.image = image
             }
             self.prevBtn.isEnabled = tuple.isEnable
 
-//Gets the number of dog images  
+//Gets the number of dog images randomly from the API  
  imageFatch.getImage(number: num) {  images in
 }
 
@@ -50,5 +51,5 @@ func didRecieveError(msg: String) {
 ```
 
 ##  Update your Xcode project build option ENABLE_USER_SCRIPT_SANDBOXING to 'No'.
-### To find the 'ENABLE_USER_SCRIPT_SANDBOXING' go to the Search icon tab in the left-hand panel within Xcode. Ensure you are searching within the 'Runner' workspace, configure the search to ignore text, and then press enter to search with text 'ENABLE_USER_SCRIPT_SANDBOXING'
+### To find the 'ENABLE_USER_SCRIPT_SANDBOXING' go to the Search icon tab in the left-hand panel within Xcode. Ensure you are searching within the 'Runner' workspace, configure the search to ignore the text, and then press enter to search with text 'ENABLE_USER_SCRIPT_SANDBOXING'
 

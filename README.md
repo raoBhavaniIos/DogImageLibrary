@@ -46,8 +46,7 @@ let (image, isPrevEnable) = imageFatch.getPreviousImage()
 func showHideloader(_ loading: Bool) {}
 
 // Delegate methods for error handling
-func didRecieveError(msg: String) {
-        
+func didRecieveError(msg: String) {}        
 ```
 
 ##  Update your Xcode project build option ENABLE_USER_SCRIPT_SANDBOXING to 'No'.

@@ -1,0 +1,6 @@
+framework module DogImageLibrary {
+  umbrella header "DogImageLibrary.h"
+  export *
+
+  module * { export * }
+}

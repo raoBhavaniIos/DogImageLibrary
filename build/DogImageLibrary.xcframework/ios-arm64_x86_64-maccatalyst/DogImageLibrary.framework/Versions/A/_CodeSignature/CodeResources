@@ -30,7 +30,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			NPGT5W4ncQFbFQiMEOdTuB+joKRjaz6KpWW+U30Ch90=
+			Ws8/Z2DADIW9YCsJXkKIiW1+p6mYOAsipN+3j2k1l10=
 			</data>
 		</dict>
 		<key>Modules/DogImageLibrary.swiftmodule/arm64-apple-ios-macabi.private.swiftinterface</key>
@@ -58,14 +58,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			+UL3X3/rhFM5bwyewuIDUM1bY8ybwS+RM6NkJV9UoDk=
+			+WeratAoIBwXGC4tQiIgKlqI7BHC4vne/jItVPMPvrA=
 			</data>
 		</dict>
 		<key>Modules/DogImageLibrary.swiftmodule/x86_64-apple-ios-macabi.abi.json</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			NPGT5W4ncQFbFQiMEOdTuB+joKRjaz6KpWW+U30Ch90=
+			Ws8/Z2DADIW9YCsJXkKIiW1+p6mYOAsipN+3j2k1l10=
 			</data>
 		</dict>
 		<key>Modules/DogImageLibrary.swiftmodule/x86_64-apple-ios-macabi.private.swiftinterface</key>
@@ -93,7 +93,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			hVovwqWqdAQewGLkyN3BH4BStSaEtgApExmR04+000A=
+			YbNxX8dscRo+Ncf7egIDBtv5zGG6SKxZ19xzVgm6vgU=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

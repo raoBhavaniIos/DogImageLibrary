@@ -57,7 +57,6 @@ import UIKit
                      let dogImageEntity = try context.fetch(fetchRequest)
                      
                      for (index,entity) in dogImageEntity.enumerated() {
-                         print("Index:\(index) :::: ImageData:\(String(describing: entity.id))")
                          if let imageData = entity.dogImage {
                              if let image = UIImage(data: imageData) {
                                  images.append(image)

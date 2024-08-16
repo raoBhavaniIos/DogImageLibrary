@@ -8,14 +8,14 @@
 import Foundation
 import UIKit
 
- class DogImageService {
+class DogImageService {
     
     public static let shared = DogImageService()
     private var baseURL = "https://dog.ceo/api/breeds/image/random"
     
     private init() {}
     
-     func fetchDogImage(_ number:Int?,completion: @escaping (Result<DogImage, Error>) -> Void) {
+    func fetchDogImage(_ number:Int?,completion: @escaping (Result<DogImage, Error>) -> Void) {
         var urlStr = baseURL
         if let number {
             urlStr = urlStr + "/\(number)"

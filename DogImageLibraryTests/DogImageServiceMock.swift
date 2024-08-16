@@ -17,7 +17,7 @@ class DogImageServiceMock: DogImageService {
             completion(result)
         }
     }
-
+    
     
     override func downloadImage(urlString: String, completion: @escaping (Result<UIImage?, any Error>) -> Void) {
         if let result = DogImageServiceMock.downloadResult {

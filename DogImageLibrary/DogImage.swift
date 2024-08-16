@@ -54,8 +54,8 @@ extension StringOrArray {
     }
 }
 
- struct DogImage: Codable {
-     let message: StringOrArray
-     let status: String
+struct DogImage: Codable {
+    let message: StringOrArray
+    let status: String
 }
 

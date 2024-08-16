@@ -14,7 +14,6 @@ public protocol DogImageDelegate {
 }
 
 public class DogImageFetcher{
-//    public static let shared = DogImageFetcher()
     private let  coreDataManager =  CoreDataManager.shared
     public var delegate: DogImageDelegate?
     var images:[UIImage] = []

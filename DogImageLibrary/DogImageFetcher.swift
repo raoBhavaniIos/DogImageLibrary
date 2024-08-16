@@ -23,7 +23,7 @@ public class DogImageFetcher{
     }
     public func getImage(completion: @escaping (UIImage?) -> Void ){
         guard self.images.isEmpty else {
-            currentIndex += 1
+            currentIndex = 1
             completion(images.first)
             return
         }

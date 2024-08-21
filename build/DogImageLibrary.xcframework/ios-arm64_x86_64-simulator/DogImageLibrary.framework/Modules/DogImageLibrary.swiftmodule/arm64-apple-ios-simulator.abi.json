@@ -946,56 +946,56 @@
     {
       "filePath": "\/Users\/sagarthorat\/Documents\/Test\/Git\/DogImageLibrary\/DogImageLibrary\/DogImageFetcher.swift",
       "kind": "Array",
-      "offset": 458,
+      "offset": 407,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/sagarthorat\/Documents\/Test\/Git\/DogImageLibrary\/DogImageLibrary\/DogImageFetcher.swift",
       "kind": "IntegerLiteral",
-      "offset": 484,
+      "offset": 433,
       "length": 2,
       "value": "-1"
     },
     {
       "filePath": "\/Users\/sagarthorat\/Documents\/Test\/Git\/DogImageLibrary\/DogImageLibrary\/DogImageService.swift",
       "kind": "StringLiteral",
-      "offset": 238,
+      "offset": 237,
       "length": 41,
       "value": "\"https:\/\/dog.ceo\/api\/breeds\/image\/random\""
     },
     {
       "filePath": "\/Users\/sagarthorat\/Documents\/Test\/Git\/DogImageLibrary\/DogImageLibrary\/CoreDataManager.swift",
       "kind": "StringLiteral",
-      "offset": 248,
+      "offset": 244,
       "length": 31,
       "value": "\"com.CleverTap.DogImageLibrary\""
     },
     {
       "filePath": "\/Users\/sagarthorat\/Documents\/Test\/Git\/DogImageLibrary\/DogImageLibrary\/CoreDataManager.swift",
       "kind": "StringLiteral",
-      "offset": 311,
+      "offset": 306,
       "length": 15,
       "value": "\"DogImageModel\""
     },
     {
       "filePath": "\/Users\/sagarthorat\/Documents\/Test\/Git\/DogImageLibrary\/DogImageLibrary\/CoreDataManager.swift",
       "kind": "StringLiteral",
-      "offset": 564,
+      "offset": 543,
       "length": 6,
       "value": "\"momd\""
     },
     {
       "filePath": "\/Users\/sagarthorat\/Documents\/Test\/Git\/DogImageLibrary\/DogImageLibrary\/CoreDataManager.swift",
       "kind": "StringLiteral",
-      "offset": 947,
+      "offset": 894,
       "length": 36,
       "value": "\"❌ Loading of store failed:\""
     },
     {
       "filePath": "\/Users\/sagarthorat\/Documents\/Test\/Git\/DogImageLibrary\/DogImageLibrary\/CoreDataManager.swift",
       "kind": "StringLiteral",
-      "offset": 982,
+      "offset": 929,
       "length": 2,
       "value": "\"\""
     }

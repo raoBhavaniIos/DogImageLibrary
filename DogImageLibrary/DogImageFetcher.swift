@@ -23,7 +23,7 @@ public class DogImageFetcher{
     }
     public func getImage(completion: @escaping (UIImage?) -> Void ){
         guard self.images.isEmpty else {
-            currentIndex = 1
+            currentIndex = 0
             completion(images.first)
             return
         }
@@ -87,7 +87,6 @@ public class DogImageFetcher{
                                 self?.coreDataManager.saveImageData(image)
                             }
                             self?.images = self?.coreDataManager.fetchAllImages() ?? []
-                            print(self?.images.count ?? 0)
                             completion([image])
                         case.failure(let error):
                             self?.delegate?.didRecieveError(msg: error.localizedDescription)

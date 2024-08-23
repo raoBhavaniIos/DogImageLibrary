@@ -54,7 +54,7 @@ class CoreDataManager{
             
             let dogImageEntity = try context.fetch(fetchRequest)
             
-            for (index,entity) in dogImageEntity.enumerated() {
+            for (_,entity) in dogImageEntity.enumerated() {
                 if let imageData = entity.dogImage {
                     if let image = UIImage(data: imageData) {
                         images.append(image)

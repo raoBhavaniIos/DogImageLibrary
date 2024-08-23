@@ -28,8 +28,9 @@ public class DogImageFetcher{
             return
         }
         delegate?.showHideloader(true)
-        fetchImage{ [weak self]images in
-            self?.delegate?.showHideloader(false)
+        fetchImage{ [weak self] images in
+            guard let self = self else { return }
+            self.delegate?.showHideloader(false)
             completion(images?.first as? UIImage)
         }
     }
@@ -40,23 +41,32 @@ public class DogImageFetcher{
             completion(images[currentIndex])
         }else{
             delegate?.showHideloader(true)
-            fetchImage{[weak self] images in
-                self?.delegate?.showHideloader(false)
-                if let image = images?.first as? UIImage {
-                    self?.currentIndex += 1
-                    completion(image)
+            fetchImage { [weak self] fetchedImages in
+                guard let self = self else { return }
+                self.delegate?.showHideloader(false)
+                
+                if let fetchedImage = fetchedImages?.first as? UIImage {
+                    self.currentIndex += 1
+                    completion(fetchedImage)
+                } else {
+                    // Handle the case where fetching fails or returns no valid image
+                    self.delegate?.didRecieveError(msg:"Error in Fetching Image")
                 }
             }
         }
     }
     
     public func getPreviousImage() -> (image:UIImage?,isEnable:Bool){
-        if currentIndex <= 0 {
-            return (nil,false)
-        }else{
-            currentIndex -= 1
-            return (images[currentIndex],currentIndex == 0 ? false : true )
+        guard currentIndex > 0 else {
+            return (nil, false)
         }
+        
+        currentIndex -= 1
+        
+        let image = images[currentIndex]  // Using a safe array access method
+        let isEnable = currentIndex > 0
+        
+        return (image, isEnable)
     }
     
     public func getImage(number: Int,completion:@escaping ([UIImage?]?) -> Void){
@@ -81,33 +91,52 @@ public class DogImageFetcher{
             case .success(let dogImage):
                 if let imageUrlStr = dogImage.message.asString {
                     downloadImage(imageUrlStr) { [weak self] result in
+                        guard let self = self else { return }
                         switch result{
                         case .success(let image):
                             if let image{
-                                self?.coreDataManager.saveImageData(image)
+                                self.coreDataManager.saveImageData(image)
                             }
-                            self?.images = self?.coreDataManager.fetchAllImages() ?? []
+                            self.images = self.coreDataManager.fetchAllImages()
                             completion([image])
                         case.failure(let error):
-                            self?.delegate?.didRecieveError(msg: error.localizedDescription)
+                            self.delegate?.didRecieveError(msg: error.localizedDescription)
                         }
                     }
                 }else if let imageURLArray = dogImage.message.asArray{
                     var imageArray = [UIImage]()
                     let dispatchGroup = DispatchGroup()
                     var hasError: Error?
+                    let queue = DispatchQueue(label: "DownloadTask")
+                    var workItems = [DispatchWorkItem]()
+                    let imageArraylock = NSLock()
                     for imageURLStr in imageURLArray{
                         dispatchGroup.enter()
-                        downloadImage(imageURLStr) { result in
-                            switch result {
-                            case .success(let image):
-                                if let image{
-                                    imageArray.append(image)
-                                }
-                            case .failure(let error):
-                                hasError = error
+                        let workItem = DispatchWorkItem {
+                            if hasError != nil {
+                                dispatchGroup.leave()
+                                return
                             }
-                            dispatchGroup.leave()
+                            self.downloadImage(imageURLStr) { result in
+                                switch result {
+                                case .success(let image):
+                                    if let image{
+                                        imageArraylock.lock()
+                                        imageArray.append(image)
+                                        imageArraylock.unlock()
+                                    }
+                                case .failure(let error):
+                                    hasError = error
+                                    workItems.forEach { workItem in
+                                        workItem.cancel()
+                                    }
+                                }
+                                dispatchGroup.leave()
+                            }
+                        }
+                        if !workItem.isCancelled {
+                            queue.async(execute: workItem)
+                            workItems.append(workItem)
                         }
                     }
                     dispatchGroup.notify(queue: .global()) {

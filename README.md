@@ -1,54 +1,103 @@
 # DogImageLibrary
-Library for fetching images from URL
+
+A lightweight library for fetching dog images from a URL.
+
 ## Installation
-> DogImageLibrary is available through CocoaPods. To install it, simply add the following line to your Podfile
-```
+
+`DogImageLibrary` is available through CocoaPods. To integrate it into your Xcode project, add the following line to your `Podfile`:
+
+```ruby
 target 'YourAppTarget' do
   pod 'DogImageLibrary'
 end
 ```
-> Run below Command in the Terminal
- ```
+## Then, run the following command in your terminal:
+
+
+
+```bash
 pod install
- ```
-## Integration in App
 ```
+## Integration in Your App
+
+Import the Library:
+
+```swift
 import DogImageLibrary
-
-let imageFatchLibrary: DogImageFetcher = DogImageFetcher()
-
-//  confirm to Delegate 
-imageFatch.delegate = self 
-
-// fetch the first image from the Library
-imageFatch.getImage { image in
-            
-        }
-
-// Fetch NextImage
-imageFatch.getNextImage { image in
-                
-        }
-
-// gets PreviousImage and bool for the previous image present 
-let (image, isPrevEnable) = imageFatch.getPreviousImage()
-        
-        if let image = tuple.image {
-                self.imageView.image = image
-            }
-            self.prevBtn.isEnabled = tuple.isEnable
-
-//Gets the number of dog images randomly from the API  
- imageFatch.getImage(number: num) {  images in
-}
-
-// Delegate methods for if the user wants to show hide loading view
-func showHideloader(_ loading: Bool) {}
-
-// Delegate methods for error handling
-func didRecieveError(msg: String) {}        
 ```
+## Initialize the Image Fetcher:
 
-##  Update your Xcode project build option ENABLE_USER_SCRIPT_SANDBOXING to 'No'.
-### To find the 'ENABLE_USER_SCRIPT_SANDBOXING' go to the Search icon tab in the left-hand panel within Xcode. Ensure you are searching within the 'Runner' workspace, configure the search to ignore the text, and then press enter to search with text 'ENABLE_USER_SCRIPT_SANDBOXING'
+```swift
+let imageFetcher = DogImageFetcher()
+```
+## Set the Delegate:
+Make sure your class conforms to DogImageFetcherDelegate to handle loading and error states:
 
+```swift
+imageFetcher.delegate = self
+```
+Fetch the First Image:
+
+```swift
+imageFetcher.getImage { image in
+    // Handle the fetched image
+}
+```
+Fetch the Next Image:
+
+```swift
+imageFetcher.getNextImage { image in
+    // Handle the next image
+}
+```
+Fetch the Previous Image:
+
+```swift
+let (image, isPrevEnabled) = imageFetcher.getPreviousImage()
+
+if let image = image {
+    self.imageView.image = image
+}
+self.prevBtn.isEnabled = isPrevEnabled
+```
+Fetch Multiple Images:
+Fetch a specified number of dog images:
+
+```swift
+imageFetcher.getImage(number: num) { images in
+    // Handle the array of images
+}
+```
+Delegate Methods
+
+Show/Hide Loading View
+Implement this delegate method to control the loading indicator:
+
+
+
+```swift
+func showHideloader(_ loading: Bool) {
+    // Show or hide the loader based on the loading state
+}
+```
+Error Handling
+Handle errors with this delegate method:
+
+
+
+```swift
+func didRecieveError(msg: String) {
+    // Handle the error message
+}
+```
+## Xcode Project Configuration
+
+```
+To use DogImageLibrary, update your Xcode project’s build setting ENABLE_USER_SCRIPT_SANDBOXING to No.
+
+How to Update ENABLE_USER_SCRIPT_SANDBOXING:
+In Xcode, click the search icon tab in the left-hand panel.
+Ensure the search scope is set to the 'Runner' workspace.
+Search for ENABLE_USER_SCRIPT_SANDBOXING.
+Set the value to No
+```

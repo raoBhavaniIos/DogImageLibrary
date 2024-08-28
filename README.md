@@ -60,7 +60,8 @@ if let image = image {
 }
 self.prevBtn.isEnabled = isPrevEnabled
 ```
-Fetch Multiple Images:
+### Fetch Multiple Images:
+
 Fetch a specified number of dog images:
 
 ```swift
